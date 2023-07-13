@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+   application:
+      name: spring boot 
+   
+   boot:
+      admin:
+         ui:
+            title: "Projeto de monitoramento das apis"
+
+logging:
+   level:
+      root: INFO
+
+management:
+   endpoints:
+      web:
+         exposure:
+            include: "*"
+   endpoint:
+      health:
+         show-details: always
