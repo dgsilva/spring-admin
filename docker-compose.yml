@@ -1,0 +1,10 @@
+version: '2.4'
+services:
+
+  spring-admin:
+    image: registry.hub.docker.com/diegorj9315/spring-admin:0.0.1-SNAPSHOT
+    ports:
+    - "8081:8081"
+
+volumes:
+  dev_data:
