@@ -22,6 +22,7 @@
 		<docker.repo.url>registry.hub.docker.com/diegorj9315</docker.repo.url>
 		<docker.repo.project>spring-admin</docker.repo.project>
 		<docker.image.name>${docker.repo.url}/${docker.repo.project}</docker.image.name>
+		<spring-cloud.version>2021.0.4</spring-cloud.version>
 	</properties>
 	
 	<dependencies>
@@ -39,10 +40,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 		
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>de.codecentric</groupId>
 				<artifactId>spring-boot-admin-dependencies</artifactId>
@@ -59,27 +72,23 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-	        <plugin>
-  				<groupId>com.google.cloud.tools</groupId>
-  				<artifactId>jib-maven-plugin</artifactId>
-  				<version>${jib-maven-plugin.version}</version>
-  				<configuration>
-    				<from>
-      					<image>${docker.distroless.image}</image>
-    				</from>
-    				<to>
-    					<image>${docker.image.name}</image>
-    					<tags>
-    						<tag>${project.version}</tag>
-    					</tags>
-    				</to>
-    					 <mainClass>com.example.demo.SpringAdminApplication</mainClass>		
-			</configuration>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib-maven-plugin.version}</version>
+				<configuration>
+					<from>
+						<image>${docker.distroless.image}</image>
+					</from>
+					<to>
+						<image>${docker.image.name}</image>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
+					</to>
+				</configuration>
 			</plugin>
-			
-			
-			
 		</plugins>
 	</build>
 

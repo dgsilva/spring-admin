@@ -21,3 +21,14 @@ management:
    endpoint:
       health:
          show-details: always
+        # Eureka Configuration
+         eureka:
+           instance:
+             leaseRenewalIntervalInSeconds: 10
+             leaseExpirationDurationInSeconds: 30
+           client:
+             registerWithEureka: true
+             serviceUrl:
+               defaultZone: http://localhost:8750/eureka
+             healthcheck:
+               enabled: true
